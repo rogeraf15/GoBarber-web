@@ -1,5 +1,7 @@
 import React from 'react';
 import { FiLogIn, FiMail, FiLock } from 'react-icons/fi';
+import { Link } from 'react-router-dom';
+import { Form } from '@unform/web';
 
 import logoImg from '../../assets/logo.svg';
 
@@ -9,29 +11,35 @@ import Button from '../../components/Button';
 
 import { Container, Content, Background } from './styles';
 
-const Signin: React.FC = () => (
-  <Container>
-    <Content>
-      <img src={logoImg} alt="GoBarber" />
+const Signin: React.FC = () => {
+  function handleSubmit(data: any):void {
+    console.log(data);
+  }
 
-      <form>
-        <h1>Faça seu logon</h1>
-        <Input name="email" icon={FiMail} placeholder="E-mail" />
+  return (
+    <Container>
+      <Content>
+        <img src={logoImg} alt="GoBarber" />
 
-        <Input name="password" icon={FiLock} type="password" placeholder="Senha" />
+        <Form onSubmit={handleSubmit}>
+          <h1>Faça seu logon</h1>
+          <Input name="email" icon={FiMail} placeholder="E-mail" />
 
-        <Button type="submit">Entrar</Button>
+          <Input name="password" icon={FiLock} type="password" placeholder="Senha" />
 
-        <a href="forgot">Esqueci minha senha</a>
-      </form>
+          <Button type="submit">Entrar</Button>
 
-      <a href="create">
-        <FiLogIn />
-        Criar conta
-      </a>
-    </Content>
-    <Background />
-  </Container>
-);
+          <Link to="forgot">Esqueci minha senha</Link>
+        </Form>
+
+        <Link to="/create-account">
+          <FiLogIn />
+          Criar conta
+        </Link>
+      </Content>
+      <Background />
+    </Container>
+  );
+};
 
 export default Signin;
