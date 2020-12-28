@@ -31,7 +31,6 @@ export const Container = styled.div<ContainerProps>`
   `}
 
   input {
-    flex: 1;
     border: 0;
     background: transparent;
     color: #F4EDE8;
@@ -45,4 +44,6 @@ export const Container = styled.div<ContainerProps>`
   svg {
     margin-right: 16px;
   }
+
+
 `;
