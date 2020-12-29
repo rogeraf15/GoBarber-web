@@ -1,4 +1,4 @@
-import React, { useRef, useCallback, useContext } from 'react';
+import React, { useRef, useCallback } from 'react';
 import { FiLogIn, FiMail, FiLock } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
 
@@ -7,7 +7,7 @@ import { Form } from '@unform/web';
 import * as Yup from 'yup';
 import getValidantionErrors from '../../utils/getValidationErros';
 
-import { AuthContext } from '../../context/AuthContext';
+import { useAuth } from '../../context/AuthContext';
 
 import logoImg from '../../assets/logo.svg';
 
@@ -25,9 +25,7 @@ interface SignInFormDate {
 const Signin: React.FC = () => {
   const formRef = useRef<FormHandles>(null);
 
-  const { signIn, user } = useContext(AuthContext);
-
-  console.log(user);
+  const { signIn } = useAuth();
 
   const handleSubmit = useCallback(async (data: SignInFormDate) => {
     try {
