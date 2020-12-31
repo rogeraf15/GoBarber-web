@@ -26,7 +26,7 @@
         "@typescript-eslint"
     ],
     "rules": {
-      "react-hooks/rules-of-hooks": "error",
+      "react-hooks/rules-of-hooks": "off",
       "react/jsx-props-no-spreading": "off",
       "react/prop-types": "off",
       "@typescript-eslint/no-explicit-any": "off",
