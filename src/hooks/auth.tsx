@@ -5,7 +5,7 @@ import api from '../services/api';
 
 interface AuthState {
   token: string;
-  mappedUser: any;
+  user: any;
 }
 
 interface SignInCredentials {
@@ -26,8 +26,10 @@ export const AuthProvider: React.FC = ({ children }) => {
     const token = localStorage.getItem('@GoBarber:token');
     const user = localStorage.getItem('@GoBarber:user');
 
+    console.log(user);
+
     if (token && user) {
-      return { token, mappedUser: JSON.parse(user) };
+      return { token, user: JSON.parse(user) };
     }
 
     return {} as AuthState;
@@ -38,12 +40,12 @@ export const AuthProvider: React.FC = ({ children }) => {
       email, password,
     });
 
-    const { token, mappedUser } = response.data;
+    const { token, user } = response.data;
 
     localStorage.setItem('@GoBarber:token', token);
-    localStorage.setItem('@GoBarber:user', JSON.stringify(mappedUser));
+    localStorage.setItem('@GoBarber:user', JSON.stringify(user));
 
-    setData({ token, mappedUser });
+    setData({ token, user });
   }, []);
 
   const signOut = useCallback(() => {
@@ -54,7 +56,7 @@ export const AuthProvider: React.FC = ({ children }) => {
   }, []);
 
   return (
-    <AuthContext.Provider value={{ user: data.mappedUser, signIn, signOut }}>
+    <AuthContext.Provider value={{ user: data.user, signIn, signOut }}>
       {children}
     </AuthContext.Provider>
   );
