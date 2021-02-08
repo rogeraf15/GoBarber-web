@@ -3,9 +3,15 @@ import React, {
 } from 'react';
 import api from '../services/api';
 
+interface User {
+  id: string;
+  avatar_url: string;
+  name: string;
+}
+
 interface AuthState {
   token: string;
-  user: any;
+  user: User;
 }
 
 interface SignInCredentials {
@@ -14,7 +20,7 @@ interface SignInCredentials {
 }
 
 interface AuthContextData{
-  user: any;
+  user: User;
   signIn(credentials: SignInCredentials): Promise<void>;
   signOut(): void;
 }
@@ -25,8 +31,6 @@ export const AuthProvider: React.FC = ({ children }) => {
   const [data, setData] = useState<AuthState >(() => {
     const token = localStorage.getItem('@GoBarber:token');
     const user = localStorage.getItem('@GoBarber:user');
-
-    console.log(user);
 
     if (token && user) {
       return { token, user: JSON.parse(user) };
