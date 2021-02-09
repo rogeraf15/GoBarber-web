@@ -11,6 +11,7 @@ import DayPicker, { DayModifiers } from 'react-day-picker';
 import 'react-day-picker/lib/style.css';
 
 import { FiClock, FiPower } from 'react-icons/fi';
+import { Link } from 'react-router-dom';
 import {
   Container, Header, HeaderContent, Profile,
   Content, Schedule, Calendar, NextAppointment, Section, Appointment,
@@ -122,7 +123,7 @@ const Dashboard: React.FC = () => {
 
   const nextAppointment = useMemo(() => {
     return appointments.find((appointment) => isAfter(parseISO(appointment.date), new Date()));
-  }, [selectedDate, appointments]);
+  }, [appointments]);
 
   return (
     <Container>
@@ -137,7 +138,10 @@ const Dashboard: React.FC = () => {
             />
             <div>
               <span>Bem-vindo</span>
-              <strong>{user.name}</strong>
+
+              <Link to="/profile">
+                <strong>{user.name}</strong>
+              </Link>
             </div>
           </Profile>
 
