@@ -75,7 +75,7 @@ export const AvatarInput = styled.div`
     border-radius: 50%;
   }
 
-  button {
+  label {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -99,6 +99,10 @@ export const AvatarInput = styled.div`
 
     &:hover {
       background: ${shade(0.2, '#ff9000')};
+    }
+
+    input {
+      display: none;
     }
 
   }
