@@ -50,6 +50,7 @@ const Input: React.FC<InputProps> = ({
         defaultValue={defaultValue}
         ref={inputRef}
         {...rest}
+        data-testid="input-container"
       />
       {error && (
       <Error title={error}>
